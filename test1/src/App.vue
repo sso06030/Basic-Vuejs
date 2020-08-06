@@ -4,7 +4,7 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div>
-    <router-view/>
+    <router-view/> <!-- 이 부분이 해당 컴포넌트로 교체됨 -->
   </div>
 </template>
 
