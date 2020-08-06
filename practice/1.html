@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Vue</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{ nextYear('hi') }}
+        <input :type="type" v-bind:value="inputData">
+        <a :href="getLink('kossiecoder')">channel</a>
+        <button>Click</button>
+    </div>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                person:{
+                    name:"코지코더",
+                    age:34
+                },
+                inputData:'hello',
+                type:'number',
+                link:"https://www.youtube.com/"
+            },
+            methods:{
+                getLink(channel){
+                    return this.link+channel;
+                },
+                nextYear(greeting){
+                    return greeting + ' ! ' + this.person.name + ' is '+ (this.person.age+1) + " years old next year.";
+                },
+                otherMethod(){
+                    this.nextYear();
+                }
+            }
+        })
+    </script>
+</body>
+</html> 
