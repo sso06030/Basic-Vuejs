@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <kozy-button></kozy-button>
+        <hr>
+        <kozy></kozy>
+    </div>
+
+    <script>
+        Vue.component('G-hello-world',{
+            template:`
+            <div> hello world </div>
+            `
+        })
+
+        Vue.component('kozy-button',{
+            template: `
+            <div>
+                {{ name }}
+                <G-hello-world></G-hello-world>
+                <button @click="changeText">Click</button>
+            </div>
+            `,
+            data(){
+                return {
+                    name: "kozy"
+                }
+            },
+            methods:{
+                changeText(){
+                    this.name = "kozy updated";
+                }
+            }
+        });
+
+        const HelloWorld = {
+            template:`
+            <div> hello world </div>
+            `
+        };
+
+        const KozyButton = {
+            components:{
+                'hello-world':HelloWorld
+            },
+            template: `
+            <div>
+                {{ name }}
+                <hello-world></hello-world>
+                <button @click="changeText">Click</button>
+            </div>
+            `,
+            data(){
+                return {
+                    name: "kozy"
+                }
+            },
+            methods:{
+                changeText(){
+                    this.name = "kozy updated";
+                }
+            }
+        };
+
+        const app = new Vue({
+            el:"#app",
+            components:{
+                'kozy':KozyButton
+            }
+        })
+
+    </script>
+</body>
+</html> 
