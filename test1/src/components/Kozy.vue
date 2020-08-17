@@ -1,8 +1,11 @@
 <template>
   <div>
-    <h1>{{title}}</h1>
-    <p>{{name}}</p>
-    <button @click="updateName">Change name</button>
+    <p>header</p>
+    <slot name="header"></slot>
+    <p>body</p>
+    <slot name="body" :kozy="kozy"></slot>
+    <p>footer(default : slot에 name 지정 안함)</p>
+    <slot></slot>
   </div>
 </template>
 
@@ -19,7 +22,10 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      kozy: "props kozy",
+      //name:"kozy",
+    };
   },
   methods: {
     updateName() {
