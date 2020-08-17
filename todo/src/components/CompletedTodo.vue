@@ -1,16 +1,16 @@
 <template>
-  <div>Completed Todo:{{numberOfCompletedTodo}}</div>
+  <div>
+    Completed Todo:{{ numberOfCompletedTodo }}
+    {{ todos }}
+  </div>
 </template>
 
 <script>
 export default {
-  props: {
-    todos: {
-      type: Array,
-      required: true,
-    },
-  },
   computed: {
+    todos() {
+      return this.$store.state.todos;
+    },
     numberOfCompletedTodo() {
       return this.todos.filter((todo) => todo.checked).length;
     },
@@ -18,5 +18,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>
